@@ -10,5 +10,5 @@ RUN apt install maven -y
 RUN mvn package
 
 RUN apt install tomcat9 -y
-COPY ./target/*.war /var/lib/tomcat9/webapps/
+RUN mv /boxfuse-sample-java-war-hello/target/hello-1.0.war /var/lib/tomcat9/webapps/
 EXPOSE 8080
