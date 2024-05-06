@@ -1,18 +1,23 @@
 ---
-version: '3'
+version: '2.3'
 services:
   builder:
     image: maven:3.5
     volumes:
       - '/boxfuse-sample-java-war-hello:/boxfuse-sample-java-war-hello'
+      - '/webapps:/webapps'
     working_dir: /boxfuse-sample-java-war-hello
-    command: mvn clean package
+    command: >
+      bash -c "mvn package 
+      && mv /boxfuse-sample-java-war-hello/target/*.war /webapps
+      && ls /webapps"
   tomcat:
     image: 'tomcat:jre11'
     volumes:
-      - /boxfuse-sample-java-war-hello/target:/usr/local/tomcat/webapps
+      - /webapps:/usr/local/tomcat/webapps
     ports:
       - '8080:8080'
     depends_on:
       builder:
-        condition: service_completed_successfully
+        condition: 
+          service_started
