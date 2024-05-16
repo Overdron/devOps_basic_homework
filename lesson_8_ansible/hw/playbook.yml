@@ -1,0 +1,43 @@
+
+- name: provisioning
+  hosts: web
+  become: yes
+
+  tasks:
+  - name: install git
+    apt:
+      name: git
+      state: present
+
+  - name: git clone
+    ansible.builtin.git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+      dest: /boxfuse-sample-java-war-hello
+
+  - name: change dir
+    shell:
+      chdir: /boxfuse-sample-java-war-hello
+      cmd: ls
+
+  - name: install docker
+    apt:
+      name: docker.io
+      state: present
+
+  - name: Install python docker-py package
+    ansible.builtin.pip:
+      name: docker-py
+
+  - name: Run maven container
+    docker_container:
+      name: maven_contrainer
+      image: maven:3.5
+      state: started
+      volumes:
+        - '/boxfuse-sample-java-war-hello:/boxfuse-sample-java-war-hello'
+        - '/webapps:/webapps'
+
+  - name: mvn package
+    community.docker.docker_container_exec:
+      container: maven_contrainer
+      command: /bin/bash -c "mvn package"
