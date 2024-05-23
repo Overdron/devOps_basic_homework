@@ -1,7 +1,7 @@
 FROM maven:3.5.3-jdk-8
 
 # Confugure ssh client
-ADD /root/.ssh/id_rsa /root/.ssh/id_rsa
+ADD id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Install ssh
