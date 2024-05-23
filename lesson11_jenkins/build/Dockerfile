@@ -1,8 +1,5 @@
 FROM maven:3.5.3-jdk-8
 
-# Install pacakges
-RUN apt update
-
 # Confugure ssh client
 COPY /root/.ssh/id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
