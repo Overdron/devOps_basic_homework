@@ -11,10 +11,5 @@ RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debia
 RUN apt-get update
 RUN apt-get -y install docker-ce=18.03.1~ce-0~debian
 
-# Install ssh
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-WORKDIR /boxfuse-sample-java-war-hello
-RUN mvn -B -DskipTests clean package 
-
 # Clear cache
 RUN apt-get clean
