@@ -11,6 +11,8 @@ ADD id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 RUN touch /root/.ssh/known_host
 RUN chmod 600 /root/.ssh/known_host
+
+# Get Dokcerfile
 ADD deploy/Dockerfile .
 RUN chmod +x Dockerfile
 
