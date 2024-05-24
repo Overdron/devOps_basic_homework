@@ -8,7 +8,7 @@ RUN apt-get update
 
 # Confugure ssh client
 ADD id_rsa /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa
+RUN chmod 611 /root/.ssh/id_rsa
 ADD deploy/Dockerfile .
 RUN chmod +x Dockerfile
 
