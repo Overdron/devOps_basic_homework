@@ -8,6 +8,7 @@ RUN apt-get update
 
 # Confugure ssh client
 ADD id_rsa /root/.ssh/id_rsa
+ADD ../deploy/Dockerfile /root/
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Install docker 18.03
