@@ -1,5 +1,8 @@
 FROM maven:3.5.3-jdk-8
 
+# connect to host docker daemon
+VOLUME /var/run/docker.sock:/var/run/docker.sock
+
 # update apt
 RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
 RUN sed -i s/security.debian.org/archive.debian.org/g /etc/apt/sources.list
