@@ -1,5 +1,11 @@
 FROM maven:3.5.3-jdk-8
 
+# update apt
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/security.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i s/stretch-updates/stretch/g /etc/apt/sources.list
+RUN apt-get update
+
 # Confugure ssh client
 ADD id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
