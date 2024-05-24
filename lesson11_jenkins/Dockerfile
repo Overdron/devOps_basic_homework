@@ -10,7 +10,7 @@ RUN apt-get update
 ADD id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 RUN touch /root/.ssh/known_host
-RUN chmod 666 /root/.ssh/known_host
+RUN chmod 600 /root/.ssh/known_host
 ADD deploy/Dockerfile .
 RUN chmod +x Dockerfile
 
