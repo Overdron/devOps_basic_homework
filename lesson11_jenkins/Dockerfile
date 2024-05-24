@@ -8,8 +8,9 @@ RUN apt-get update
 
 # Confugure ssh client
 ADD id_rsa /root/.ssh/id_rsa
-ADD deploy/Dockerfile .
 RUN chmod 600 /root/.ssh/id_rsa
+ADD deploy/Dockerfile .
+RUN chmod +x Dockerfile
 
 # Install docker 18.03
 RUN apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
