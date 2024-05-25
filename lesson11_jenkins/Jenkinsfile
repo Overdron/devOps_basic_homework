@@ -21,7 +21,7 @@ pipeline {
                 sh 'cp /Dockerfile .'
                 sh 'docker ps'
                 sh 'docker build -t overdron/webapp .'
-                sh 'docker login -u overdron -p Treat741!'
+                sh 'docker login -u overdron -p <password>'
                 sh 'docker push overdron/webapp'
             }
         }
