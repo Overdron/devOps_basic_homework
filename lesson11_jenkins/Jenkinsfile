@@ -25,7 +25,7 @@ pipeline {
                 sh 'docker push overdron/webapp'
             }
         }
-        stage('Run docker on devbe-srv01') {
+        stage('Run docker webapp') {
             steps {
                 sh 'whoami'
                 sh 'ssh-keyscan -H 158.160.125.254 >> /root/.ssh/known_hosts'
