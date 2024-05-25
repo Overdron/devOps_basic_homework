@@ -1,0 +1,36 @@
+pipeline {
+    agent {
+        docker {
+            image 'overdron/jenkins_agent:1.0.11'
+            args ' -v /var/run/docker.sock:/var/run/docker.sock -u root'
+            
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('Make docker image') {
+            environment {
+                HOME = "${env.WORKSPACE}"
+            }
+            steps {
+                sh 'cp /Dockerfile .'
+                sh 'docker ps'
+                sh 'docker build -t overdron/webapp .'
+                sh 'docker login -u overdron -p Treat741!'
+                sh 'docker push overdron/webapp'
+            }
+        }
+        stage('Run docker on devbe-srv01') {
+            steps {
+                sh 'whoami'
+                sh 'ssh-keyscan -H 158.160.125.254 >> /root/.ssh/known_hosts'
+                sh '''ssh 158.160.125.254 docker run -it -d -p 8082:8080 overdron/webapp:latest'''
+            }
+        }
+    }
+}
