@@ -1,0 +1,36 @@
+  GNU nano 6.2                                                            playbook2.yml
+- name: provisioning
+  hosts: build
+  become: yes
+  tasks:
+    - name: install git & maven
+      apt:
+        pkg:
+          - git
+          - maven
+        update_cache: yes
+    - name: Copy boxfuse sources
+      ansible.builtin.git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        dest: /root/boxfuse-sample-java-war-hello
+    - name: build war
+      shell:
+        chdir: /root/boxfuse-sample-java-war-hello
+        cmd: mvn -DskipTests clean package
+- name: run webapp
+  hosts: web
+  become: yes
+  tasks:
+    - name: install tomacat9
+      apt:
+        name: tomcat9
+        update_cache: yes
+    - name: get app war
+      synchronize:
+        src: /root/boxfuse-sample-java-war-hello/target/hello-1.0.war
+        dest: /var/lib/tomcat9/webapps/
+      delegate_to: "{{ groups['build'][0] }}"
+    - name: restart tomcat
+      service:
+        name: tomcat9
+        state: restarted
