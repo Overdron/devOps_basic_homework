@@ -80,6 +80,17 @@ resource "yandex_compute_instance" "vm-2" {
   metadata = {
     user-data = "${file("/root/cloud-terraform/user-data.yml")}"
   }
+
+  provisioner "file" {
+    source      = "/root/.ssh/id_rsa"
+    destination = "/home/user/.ssh/id_rsa"
+
+    connection {
+      type = "ssh"
+      user = "user"
+      host = self.network_interface.0.nat_ip_address
+    }
+  }
 }
 
 output "internal_ip_address_vm_1" {
