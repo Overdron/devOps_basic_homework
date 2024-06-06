@@ -1,0 +1,8 @@
+users:
+  - name: user
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9nLN16VSg0ZrIoDrTz60iFbFhwS3f5svMc3qscouIErMetyLZX84KgWadv/jE5ko2iV9bVKJ0LWbmZeaZX//8TKv24JsrSAtLE8bMc/n8QmdBuk89kEzS4P5g6KRZ8C9hG6udh+c/wvT2STKfky2xnTtkO82dDpq45XpPzhXU+ozR3FE/MEv2r21HFgZ4SlwDr15d3Zch0+BRw7U/BetuhqvnYGZv6G/OuvIbclkoBJ2pQQYcdF0VKH2R+w8QqWqrFGVhzhwwMjodHKj0lArcln4wCZBxB3gpur+ZNHaD9PNpOb5Lx4ycpY2fVn+F1/0qzZTc4aabznaYnFMwdiimz0Op3m2xo8ppbRtw7iOjqs1M1bhDu6AMfVyz0QwUH17cKu9R3DxNZCaxit4ZXLUsZZpla4qX7nTfg8XtvQSjSNTMR4m7oamZ64jVs+ZFDkTrgeHqmvWHllVj+AstAOEyL7xJdDnCXN5M4YiJcN1judZ/S9g4BLTD5bHuxt0hYXE= qopil@PAVLOV-LAPTOP
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCyzjc5sfFW8lsu9blElmOUKm7V70CSrlhY+Yh/zqgUeuPOloPiq1tE9M74SashC83Iac8RMuMwYboT3Z0sJgoqp78pRV+J3ONI1ksRU2cvI/ysml5/X72vupYkg0tCSK67oWj5RitC/Z7YMXtuEh7+HEU4qdKnrIuOXF5+t4F82kZX8LJ2CXBGU/dUMxStcPx/UohEyDg1nNtZdKE/ENucVq86c0Vmq3eAxOAbH6Ff24dCJF3n8kpaBnu87TEXRfaAkK0QhHlCVGZJXG3vMOlfGt2wQNjaByzHhL9oM3tdEGP1O5R2asmKgMCI/o6Bz8qak8l4dm8L7MAhgR75+Lh8pQslOLbMJLBjghHytwyfqn2kfvwqdZo7KHdHgfHdl1ouODKtTBdhSKLtWj2OPJIghb1ucniWPHh/CCXkwWoSI/JPE1EoIy2fZhHwxqNiGjXeH7x7q67ofx9DyGlPyIwbSLRcy+4RUPsjF6sAO0uGfRmGRdJpv40Uff+1gHgH5wc= root@vm2
